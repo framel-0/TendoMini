@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="order"
+            type="com.example.tendomini.data.models.Order" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        app:cardElevation="4dp"
+        app:contentPadding="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textItemOrderCode"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{order.code}"
+                android:textColor="@color/blue_700"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textItemOrderTimestamp"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Code" />
+
+            <TextView
+                android:id="@+id/textItemOrderTimestamp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{order.dateFmt}"
+                android:textAlignment="viewEnd"
+                android:textColor="@color/teal_700"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/textItemOrderCode"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textItemOrderCode"
+                app:layout_constraintTop_toTopOf="@+id/textItemOrderCode"
+                tools:text="Timestamp" />
+
+            <TextView
+                android:id="@+id/textItemOrderItemCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{order.itemsCountFmt}"
+                android:textColor="@color/blue_500"
+                app:layout_constraintEnd_toStartOf="@+id/textItemOrderItemCost"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textItemOrderCode"
+                tools:text="Items 1" />
+
+            <TextView
+                android:id="@+id/textItemOrderItemCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{order.itemsCostFmt}"
+                android:textColor="@color/teal_700"
+                app:layout_constraintBottom_toBottomOf="@+id/textItemOrderItemCount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textItemOrderItemCount"
+                app:layout_constraintTop_toTopOf="@+id/textItemOrderItemCount"
+                tools:text="100" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Delivery Cost :"
+                android:textColor="@color/blue_500"
+                app:layout_constraintEnd_toStartOf="@+id/textItemOrderDeliveryCost"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textItemOrderItemCount" />
+
+            <TextView
+                android:id="@+id/textItemOrderDeliveryCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{order.deliveryCostFmt}"
+                android:textColor="@color/teal_700"
+                app:layout_constraintBottom_toBottomOf="@+id/textView10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView10"
+                app:layout_constraintTop_toTopOf="@+id/textView10"
+                tools:text="100" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Total :"
+                android:textColor="@color/blue_500"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/textItemOrderTotalCost"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textItemOrderTotalCost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{order.totalCostFmt}"
+                android:textColor="@color/teal_700"
+                app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView13"
+                app:layout_constraintTop_toTopOf="@+id/textView13"
+                tools:text="200" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

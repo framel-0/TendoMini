@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="cartItem"
+            type="com.example.tendomini.data.models.CartItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:elevation="4dp"
+        app:cardElevation="4dp"
+        app:contentPadding="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="4dp">
+
+            <ImageView
+                android:id="@+id/imageProduct"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/tendo" />
+
+            <TextView
+                android:id="@+id/textItmCartProductName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{cartItem.product.name}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                app:layout_constraintEnd_toStartOf="@+id/imageItmCartButtonDelete"
+                app:layout_constraintStart_toEndOf="@+id/imageProduct"
+                app:layout_constraintTop_toTopOf="@+id/imageProduct"
+                tools:text="Product Name" />
+
+            <ImageButton
+                android:id="@+id/imageItmCartButtonSub"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/textItmCartQuantity"
+                app:layout_constraintEnd_toStartOf="@+id/textItmCartQuantity"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textItmCartProductPrice"
+                app:layout_constraintTop_toTopOf="@+id/textItmCartQuantity"
+                app:srcCompat="@drawable/ic_remove_circle_outline_black_24dp"
+                app:tint="@android:color/holo_red_dark" />
+
+            <ImageButton
+                android:id="@+id/imageItmCartButtonAdd"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/textItmCartQuantity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textItmCartQuantity"
+                app:layout_constraintTop_toTopOf="@+id/textItmCartQuantity"
+                app:srcCompat="@drawable/ic_add_circle_outline_black_24dp"
+                app:tint="@android:color/holo_green_dark" />
+
+            <TextView
+                android:id="@+id/textItmCartQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="@{cartItem.quantityFmt}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/textItmCartProductPrice"
+                app:layout_constraintEnd_toStartOf="@+id/imageItmCartButtonAdd"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/imageItmCartButtonSub"
+                app:layout_constraintTop_toTopOf="@+id/textItmCartProductPrice"
+                tools:text="20" />
+
+            <TextView
+                android:id="@+id/textItmCartProductPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="@{cartItem.product.displayPrice}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintBottom_toBottomOf="@+id/imageProduct"
+                app:layout_constraintEnd_toStartOf="@+id/imageItmCartButtonSub"
+                app:layout_constraintStart_toEndOf="@+id/imageProduct"
+                app:layout_constraintTop_toBottomOf="@+id/textItmCartProductName"
+                tools:text="Ghc100" />
+
+            <ImageButton
+                android:id="@+id/imageItmCartButtonDelete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@null"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_delete_black_24dp"
+                app:tint="@android:color/holo_red_light" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

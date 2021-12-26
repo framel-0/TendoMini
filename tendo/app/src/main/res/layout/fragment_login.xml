@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/fragment_horizontal_margin"
+    android:paddingTop="@dimen/fragment_vertical_margin"
+    android:paddingRight="@dimen/fragment_horizontal_margin"
+    android:paddingBottom="@dimen/fragment_vertical_margin"
+    tools:context=".ui.login.LoginFragment">
+
+    <ImageView
+        android:id="@+id/imageLoginLogo"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/tendo"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textLoginSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_sign_in"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageLoginLogo" />
+
+    <TextView
+        android:id="@+id/textLoginSignInDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_sign_in_description"
+        app:layout_constraintEnd_toEndOf="@+id/textLoginSignIn"
+        app:layout_constraintStart_toStartOf="@+id/textLoginSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/textLoginSignIn" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutLoginPhoneNumber"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        app:boxBackgroundMode="outline"
+        app:boxCollapsedPaddingTop="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomStart="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopStart="@dimen/input_layout_radius_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLoginSignInDescription">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextLoginPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_twotone_smartphone_24"
+            android:drawablePadding="@dimen/edit_text_drawable_padding"
+            android:hint="@string/prompt_phone_number"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:isScrollContainer="true"
+            android:padding="@dimen/edit_text_default_padding"
+            android:selectAllOnFocus="true"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutRegisterPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:boxBackgroundMode="outline"
+        app:boxCollapsedPaddingTop="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomStart="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopStart="@dimen/input_layout_radius_default"
+        app:layout_constraintEnd_toEndOf="@+id/inputLayoutLoginPhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/inputLayoutLoginPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutLoginPhoneNumber"
+        app:passwordToggleEnabled="false">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextRegisterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_twotone_lock_24"
+            android:drawablePadding="@dimen/edit_text_drawable_padding"
+            android:hint="@string/prompt_password"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:isScrollContainer="true"
+            android:padding="@dimen/edit_text_default_padding"
+            android:selectAllOnFocus="true"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="48dp"
+        android:enabled="false"
+        android:text="@string/action_sign_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutRegisterPassword" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/buttonLogin"
+        app:layout_constraintStart_toStartOf="@+id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+    <TextView
+        android:id="@+id/textLoginSignUpDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="Don't have an account? "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textLoginSignUp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textLoginSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="Sign Up"
+        android:textColor="@color/blue_500"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textLoginSignUpDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textLoginSignUpDescription"
+        app:layout_constraintTop_toTopOf="@+id/textLoginSignUpDescription" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

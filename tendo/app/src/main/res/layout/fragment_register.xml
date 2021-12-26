@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/fragment_horizontal_margin"
+    android:paddingTop="@dimen/fragment_vertical_margin"
+    android:paddingRight="@dimen/fragment_horizontal_margin"
+    android:paddingBottom="@dimen/fragment_vertical_margin"
+    tools:context=".ui.register.RegisterFragment">
+
+    <ImageView
+        android:id="@+id/imageRegisterLogo"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/tendo"
+        app:layout_constraintDimensionRatio="w,1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textRegisterSignUp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/text_sign_up"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageRegisterLogo" />
+
+    <TextView
+        android:id="@+id/textRegisterSignUpDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/text_sign_up_description"
+        app:layout_constraintEnd_toEndOf="@+id/textRegisterSignUp"
+        app:layout_constraintStart_toStartOf="@+id/textRegisterSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/textRegisterSignUp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutRegisterFullName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        app:boxBackgroundMode="outline"
+        app:boxCollapsedPaddingTop="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomStart="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopStart="@dimen/input_layout_radius_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textRegisterSignUpDescription">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextRegisterFullName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_twotone_perm_identity_24"
+            android:drawablePadding="@dimen/edit_text_drawable_padding"
+            android:hint="@string/prompt_full_name"
+            android:imeOptions="actionNext"
+            android:inputType="textPersonName"
+            android:isScrollContainer="true"
+            android:padding="@dimen/edit_text_default_padding"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutRegisterPhoneNumber"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:boxBackgroundMode="outline"
+        app:boxCollapsedPaddingTop="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomStart="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopStart="@dimen/input_layout_radius_default"
+        app:layout_constraintEnd_toEndOf="@+id/inputLayoutRegisterFullName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/inputLayoutRegisterFullName"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutRegisterFullName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextRegisterPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_twotone_smartphone_24"
+            android:drawablePadding="@dimen/edit_text_drawable_padding"
+            android:hint="@string/prompt_phone_number"
+            android:imeOptions="actionNext"
+            android:inputType="phone"
+            android:isScrollContainer="true"
+            android:padding="@dimen/edit_text_default_padding"
+            android:selectAllOnFocus="true"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutRegisterEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:boxBackgroundMode="outline"
+        app:boxCollapsedPaddingTop="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomStart="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopStart="@dimen/input_layout_radius_default"
+        app:layout_constraintEnd_toEndOf="@+id/inputLayoutRegisterPhoneNumber"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/inputLayoutRegisterPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutRegisterPhoneNumber">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextRegisterEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_twotone_email_24"
+            android:drawablePadding="@dimen/edit_text_drawable_padding"
+            android:hint="@string/prompt_email"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:isScrollContainer="true"
+            android:padding="@dimen/edit_text_default_padding"
+            android:selectAllOnFocus="true"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayoutRegisterPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:boxBackgroundMode="outline"
+        app:boxCollapsedPaddingTop="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusBottomStart="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopEnd="@dimen/input_layout_radius_default"
+        app:boxCornerRadiusTopStart="@dimen/input_layout_radius_default"
+        app:layout_constraintEnd_toEndOf="@+id/inputLayoutRegisterEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/inputLayoutRegisterEmail"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutRegisterEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextRegisterPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_twotone_lock_24"
+            android:drawablePadding="@dimen/edit_text_drawable_padding"
+            android:hint="@string/prompt_password"
+            android:imeActionLabel="@string/action_sign_in_short"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:isScrollContainer="true"
+            android:padding="@dimen/edit_text_default_padding"
+            android:selectAllOnFocus="true"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="48dp"
+        android:backgroundTint="@color/blue_500"
+        android:enabled="true"
+        android:text="@string/action_sign_up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputLayoutRegisterPassword" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/buttonRegister"
+        app:layout_constraintStart_toStartOf="@+id/buttonRegister"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
+
+    <TextView
+        android:id="@+id/textRegisterSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="Sign In"
+        android:textColor="@color/blue_500"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textRegisterSignInDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textRegisterSignInDescription"
+        app:layout_constraintTop_toTopOf="@+id/textRegisterSignInDescription" />
+
+    <TextView
+        android:id="@+id/textRegisterSignInDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="Already have an account? "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textRegisterSignIn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

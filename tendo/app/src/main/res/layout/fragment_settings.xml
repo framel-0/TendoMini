@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingTop="10dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="10dp"
+    tools:context=".ui.settings.SettingsFragment">
+
+    <ImageView
+        android:id="@+id/imageSettingsProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:src="@drawable/ic_twotone_perm_identity_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/teal_200" />
+
+    <TextView
+        android:id="@+id/textSettingsProfile"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="Profile"
+        android:textAlignment="gravity"
+        android:textColor="@color/blue_500"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSettingsProfile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageSettingsProfile"
+        app:layout_constraintTop_toTopOf="@+id/imageSettingsProfile" />
+
+    <ImageView
+        android:id="@+id/imageSettingsOrder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_twotone_shopping_bag_24"
+        app:layout_constraintStart_toStartOf="@+id/imageSettingsProfile"
+        app:layout_constraintTop_toBottomOf="@+id/imageSettingsProfile"
+        app:tint="@color/teal_200" />
+
+    <TextView
+        android:id="@+id/textSettingsOrder"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="My Order"
+        android:textAlignment="gravity"
+        android:textColor="@color/blue_500"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSettingsOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageSettingsProfile"
+        app:layout_constraintTop_toTopOf="@+id/imageSettingsOrder" />
+
+    <ImageView
+        android:id="@+id/imageSettingsAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_twotone_info_24"
+        app:layout_constraintStart_toStartOf="@+id/imageSettingsOrder"
+        app:layout_constraintTop_toBottomOf="@+id/imageSettingsOrder"
+        app:tint="@color/teal_200" />
+
+    <TextView
+        android:id="@+id/textSettingsAbout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:text="About"
+        android:textAlignment="gravity"
+        android:textColor="@color/blue_500"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSettingsAbout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/imageSettingsProfile"
+        app:layout_constraintTop_toTopOf="@+id/imageSettingsAbout"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
