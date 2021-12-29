@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_product_category"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_twotone_amp_stories_24"
         android:title="@string/title_category" />
 
     <item

@@ -17,7 +17,7 @@ class ProductCategoryDataSourceImpl :
             id = 2,
             name = "Beauty",
             description = "",
-            image = R.drawable.ic_twotone_smartphone_24
+            image = R.drawable.ic_twotone_supervised_user_circle_24
         ),
         ProductCategory(
             id = 3,
