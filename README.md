@@ -91,6 +91,8 @@ On click of the orders the user is navigated to order page
 ### Order Page
 This shows the list of orders made by the user, on click of an order the user is directed to the order detail screen where the user can track the order through a chat conversation on WhatsApp. 
 
-<img src="images/orders.png width="40%" height="40%"" alt="Orders"/>
+<img src="images/orders.png" width="40%" height="40%" alt="Orders"/>
 
 <img src="images/order_detail.png" width="40%" height="40%" alt="Order Detail"/>
+
+<img src="images/track_order.png" width="40%" height="40%" alt="Track Order"/>
