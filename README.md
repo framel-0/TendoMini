@@ -39,9 +39,9 @@ Launch the application by clicking on the Tendo Mini icon on your device as show
 When Tendo Mini application is launched for the first time, the login screen displayed. 
 User must enter the phone number and password to login. On successful login, the user is directed to home page 
 
-<img src="images/login.png" alt="Login"/>
+<img src="images/login.png" width="400" height="500" alt="Login"/>
 
-<img src="images/register.png" alt="Register"/>
+<img src="images/register.png" width="400" height="500" alt="Register"/>
 
 ### Home page
 The list of product categories is displayed on the top sections and the list of all product is displayed under the section of product category 
