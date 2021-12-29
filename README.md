@@ -39,33 +39,33 @@ Launch the application by clicking on the Tendo Mini icon on your device as show
 When Tendo Mini application is launched for the first time, the login screen displayed. 
 User must enter the phone number and password to login. On successful login, the user is directed to home page 
 
-<img src="images/login.png" alt="Login"/>
+<img src="images/login.png" width="40%" height="40%" alt="Login"/>
 
-<img src="images/register.png" alt="Register"/>
+<img src="images/register.png" width="40%" height="40%" alt="Register"/>
 
 ### Home page
 The list of product categories is displayed on the top sections and the list of all product is displayed under the section of product category 
 
 On click of a product the user is navigated to the product detail screen which displays the details of the product selected 
 
-<img src="images/home.png" alt="Home"/>
+<img src="images/home.png" width="40%" height="40%" alt="Home"/>
 
 ### Product Detail Screen
 On click of the share icon a dialog is display with the product image, name, description and price which is editable before sharing. 
 On click of the button, add to cart the button the product is added to the cart for checkout
 
-<img src="images/product_detail.png" alt="Product Detail"/>
+<img src="images/product_detail.png" width="40%" height="40%" alt="Product Detail"/>
 
 ### Category Page
 The list of product categories is displayed on this page.
 The search bar on top of list of product categories enables the user to search the product categories by the name.
 
-<img src="images/category.png" alt="Category"/>
+<img src="images/category.png" width="40%" height="40%" alt="Category"/>
 
 On click of a product category the user is navigated to products screen where list of product is displayed based on the category selected
 The search bar on top of list of products enables the user to search the products by the name.
 
-<img src="images/products.png" alt="Products"/>
+<img src="images/products.png" width="40%" height="40%" alt="Products"/>
 
 ### Cart Page
 To navigate to the cart page the shopping cart icon on the toolbar is clicked
@@ -78,19 +78,21 @@ The total cost and number of the items in the cart list is shown bottom of the c
 Right below that is a spinner with a list of delivery location to select from and description 
 The next button navigates the user to the order summary page where they can submit their order by pressing the submit order button 
 
-<img src="images/cart.png" alt="Cart"/>
+<img src="images/cart.png" width="40%" height="40%" alt="Cart"/>
 
-<img src="images/order_summary.png" alt="Order Summary"/>
+<img src="images/order_summary.png" width="40%" height="40%" alt="Order Summary"/>
 
 ### Settings Page
 This page shows an icon and text for orders and about 
 On click of the orders the user is navigated to order page
 
-<img src="images/settings.png" alt="Settings"/>
+<img src="images/settings.png" width="40%" height="40%" alt="Settings"/>
 
 ### Order Page
 This shows the list of orders made by the user, on click of an order the user is directed to the order detail screen where the user can track the order through a chat conversation on WhatsApp. 
 
-<img src="images/orders.png" alt="Orders"/>
+<img src="images/orders.png" width="40%" height="40%" alt="Orders"/>
 
-<img src="images/order_detail.png" alt="Order Detail"/>
+<img src="images/order_detail.png" width="40%" height="40%" alt="Order Detail"/>
+
+<img src="images/track_order.png" width="40%" height="40%" alt="Track Order"/>
