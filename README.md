@@ -16,7 +16,7 @@
 MVVM (Model-View-ViewModel) is one of the best options for Android development. It has even fully supported and encouraged by Google with their first-party libraries.
 In case of MVVM, there are three inherent parts, which help in accomplishing the separation of concerns: models, views and view models. You can also add a repository, which acts as a single source of truth for all the data
 
-<img src="images/mvvm-architecture-overview.webp" alt="mvvm architecture"/>
+<img src="images/mvvm-architecture-overview.png" alt="mvvm architecture"/>
 
 ### View
 In the context of MVVM, View doesn’t mean the base class of all the TextViews and RecyclerViews. Instead it’s a part of your app which handles what the user sees and touches on the screen. In other words, a View does all the things an Activity or a Fragment can do.
