@@ -98,9 +98,9 @@ class MainActivity : AppCompatActivity(), KodeinAware {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onStop() {
-        super.onStop()
-        viewModel.deleteAllOrders()
-    }
+//    override fun onStop() {
+//        super.onStop()
+//        viewModel.deleteAllOrders()
+//    }
 
 }
