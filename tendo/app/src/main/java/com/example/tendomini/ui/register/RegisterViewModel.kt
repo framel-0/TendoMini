@@ -49,7 +49,23 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
     }
 
     private fun isPhoneNumberValid(phoneNumber: String): Boolean {
-        return phoneNumber.length > 9
+
+        val phoneNumberIntCode = phoneNumber.substring(4, phoneNumber.length)
+
+        return if (!phoneNumberIntCode.isNullOrEmpty()) {
+
+            val sub = phoneNumberIntCode.substring(0, 1)
+
+            val phoneNumberFmt = if (sub == "0") {
+                phoneNumberIntCode.substring(1, phoneNumberIntCode.length)
+            } else {
+                phoneNumberIntCode
+            }
+
+            phoneNumberFmt.length < 2 || phoneNumberFmt.length > 8
+        } else {
+            false
+        }
     }
 
 

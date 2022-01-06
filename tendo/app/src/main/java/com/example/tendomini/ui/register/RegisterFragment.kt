@@ -56,6 +56,8 @@ class RegisterFragment : Fragment(), KodeinAware {
         val loadingProgressBar = binding.loading
         val signInTextView = binding.textRegisterSignIn
 
+        phoneNumberEditText.setText("+233")
+
         registerViewModel.registerFormState.observe(viewLifecycleOwner,
             Observer { loginFormState ->
                 if (loginFormState == null) {
@@ -123,10 +125,25 @@ class RegisterFragment : Fragment(), KodeinAware {
         }
 
         registerButton.setOnClickListener {
+
+            val phoneNumber  = phoneNumberEditText.text.toString()
+
+            val phoneNumberIntCode = phoneNumber.substring(4, phoneNumber.length)
+
+                val sub = phoneNumberIntCode.substring(0, 1)
+
+                val phoneNumberFmt = if (sub == "0") {
+                    phoneNumberIntCode.substring(1, phoneNumberIntCode.length)
+                } else {
+                    phoneNumberIntCode
+                }
+
+            val passwordEdt = "+233$phoneNumberFmt"
+
             loadingProgressBar.visibility = View.VISIBLE
             registerViewModel.register(
                 fullNameEditText.text.toString(),
-                phoneNumberEditText.text.toString(),
+                passwordEdt,
                 emailEditText.text.toString(),
                 passwordEditText.text.toString()
             )
