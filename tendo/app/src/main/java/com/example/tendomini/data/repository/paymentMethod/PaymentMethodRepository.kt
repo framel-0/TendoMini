@@ -1,8 +1,8 @@
 package com.example.tendomini.data.repository.paymentMethod
 
-import com.example.tendomini.data.models.PaymentMethod
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
+import com.example.tendomini.domain.models.PaymentMethod
 
 interface PaymentMethodRepository {
-    fun getPaymentMethods(): Result<ArrayList<PaymentMethod>>
+    fun getPaymentMethods(): Result<List<PaymentMethod>>
 }

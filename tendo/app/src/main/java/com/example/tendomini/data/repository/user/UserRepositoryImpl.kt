@@ -1,10 +1,18 @@
 package com.example.tendomini.data.repository.user
 
-import com.example.tendomini.data.datasource.user.UserDataSource
-import com.example.tendomini.data.models.Result
-import com.example.tendomini.data.models.User
+import com.example.tendomini.data.Result
+import com.example.tendomini.data.datasource.remote.mappers.UserDtoMapper
+import com.example.tendomini.data.datasource.remote.user.UserDataSource
+import com.example.tendomini.domain.models.User
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class UserRepositoryImpl(private val  dataSource: UserDataSource) : UserRepository{
+@Singleton
+class UserRepositoryImpl @Inject constructor(
+    private val dataSource: UserDataSource,
+    private val dtoMapper: UserDtoMapper
+) :
+    UserRepository {
 
     // in-memory cache of the loggedInUser object
     var user: User? = null
@@ -14,8 +22,6 @@ class UserRepositoryImpl(private val  dataSource: UserDataSource) : UserReposito
         get() = user != null
 
     init {
-        // If user credentials will be cached in local storage, it is recommended it be encrypted
-        // @see https://developer.android.com/training/articles/keystore
         user = null
     }
 
@@ -25,14 +31,21 @@ class UserRepositoryImpl(private val  dataSource: UserDataSource) : UserReposito
     }
 
     override fun login(username: String, password: String): Result<User> {
-        // handle login
-        val result = dataSource.login(username, password)
 
-        if (result is Result.Success) {
-            setLoggedInUser(result.data)
+        try {
+            // handle login
+            val result = dataSource.login(username, password)
+
+            val user = dtoMapper.mapToDomainModel(result)
+
+            setLoggedInUser(user)
+
+            return Result.Success(user)
+
+        } catch (e: Exception) {
+            return Result.Error(e)
         }
 
-        return result
     }
 
     override fun register(
@@ -41,14 +54,20 @@ class UserRepositoryImpl(private val  dataSource: UserDataSource) : UserReposito
         email: String,
         password: String
     ): Result<User> {
-        // handle register
-        val result = dataSource.register(fullName, phoneNumber, email, password)
+        try {
+            // handle login
+            val result = dataSource.register(fullName, phoneNumber, email, password)
 
-        if (result is Result.Success) {
-            setLoggedInUser(result.data)
+            val user = dtoMapper.mapToDomainModel(result)
+
+            setLoggedInUser(user)
+
+            return Result.Success(user)
+
+        } catch (e: Exception) {
+            return Result.Error(e)
         }
 
-        return result
     }
 
     private fun setLoggedInUser(loggedInUser: User) {

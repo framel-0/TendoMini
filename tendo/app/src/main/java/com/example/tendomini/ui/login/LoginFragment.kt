@@ -9,24 +9,20 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.tendomini.R
-import com.example.tendomini.data.models.User
 import com.example.tendomini.databinding.FragmentLoginBinding
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
-import org.kodein.di.generic.instance
-import androidx.appcompat.app.AppCompatActivity
+import com.example.tendomini.domain.models.User
+import dagger.hilt.android.AndroidEntryPoint
 
-class LoginFragment : Fragment(), KodeinAware {
+@AndroidEntryPoint
+class LoginFragment : Fragment() {
 
-    override val kodein by closestKodein()
-
-    private lateinit var loginViewModel: LoginViewModel
-    private val viewModelFactory: LoginViewModelFactory by instance()
+    private val loginViewModel: LoginViewModel by viewModels()
 
     private var _binding: FragmentLoginBinding? = null
 
@@ -47,8 +43,6 @@ class LoginFragment : Fragment(), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loginViewModel = ViewModelProvider(this, viewModelFactory)
-            .get(LoginViewModel::class.java)
 
         val phoneNumberEditText = binding.editTextLoginPhoneNumber
         val passwordEditText = binding.editTextLoginPhoneNumber

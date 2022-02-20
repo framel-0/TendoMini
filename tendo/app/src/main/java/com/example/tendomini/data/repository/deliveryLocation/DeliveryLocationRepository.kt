@@ -1,8 +1,8 @@
 package com.example.tendomini.data.repository.deliveryLocation
 
-import com.example.tendomini.data.models.DeliveryLocation
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
+import com.example.tendomini.domain.models.DeliveryLocation
 
 interface DeliveryLocationRepository {
-    fun getDeliveryLocations(): Result<ArrayList<DeliveryLocation>>
+    fun getDeliveryLocations(): Result<List<DeliveryLocation>>
 }

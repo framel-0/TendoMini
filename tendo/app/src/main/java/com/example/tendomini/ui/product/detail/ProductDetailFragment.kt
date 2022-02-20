@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -19,12 +20,13 @@ import com.example.tendomini.R
 import com.example.tendomini.databinding.DialogProductShareBinding
 import com.example.tendomini.databinding.FragmentProductDetailBinding
 import com.example.tendomini.internal.glide.GlideApp
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 
-
+@AndroidEntryPoint
 class ProductDetailFragment : Fragment() {
 
-    private lateinit var viewModel: ProductDetailViewModel
+    private val viewModel: ProductDetailViewModel by viewModels()
 
     private val args: ProductDetailFragmentArgs by navArgs()
 
@@ -45,7 +47,6 @@ class ProductDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ProductDetailViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -127,7 +128,7 @@ class ProductDetailFragment : Fragment() {
             .setView(dialogProductShareBinding.root)
 //            .setTitle("CONFIGURATIONS")
 
-        val mAlertDialog: AlertDialog = builder.show()
+//        val mAlertDialog: AlertDialog = builder.show()
 
         val appContext = context?.applicationContext ?: return
 

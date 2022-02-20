@@ -7,19 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.tendomini.databinding.FragmentOrderDetailBinding
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
+import dagger.hilt.android.AndroidEntryPoint
 
-class OrderDetailFragment : Fragment(), KodeinAware {
-
-    override val kodein by closestKodein()
+@AndroidEntryPoint
+class OrderDetailFragment : Fragment() {
 
     private val args: OrderDetailFragmentArgs by navArgs()
 
-    private lateinit var viewModel: OrderDetailViewModel
+    private val viewModel: OrderDetailViewModel by viewModels()
 
     private var _binding: FragmentOrderDetailBinding? = null
 
@@ -36,7 +35,6 @@ class OrderDetailFragment : Fragment(), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(OrderDetailViewModel::class.java)
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner

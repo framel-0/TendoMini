@@ -3,7 +3,7 @@
     package="com.example.tendomini">
 
     <application
-        android:name=".TendoMiniApplication"
+        android:name=".ui.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,12 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TendoMini">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activities.MainActivity"
             android:exported="true"
             android:label="@string/app_name" />
 
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

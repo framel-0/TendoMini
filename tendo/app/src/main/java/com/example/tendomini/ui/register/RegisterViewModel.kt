@@ -5,11 +5,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tendomini.R
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
 import com.example.tendomini.data.repository.user.UserRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-
-class RegisterViewModel(private val userRepository: UserRepository) : ViewModel() {
+@HiltViewModel
+class RegisterViewModel @Inject constructor(private val userRepository: UserRepository) :
+    ViewModel() {
 
     private val _loginForm = MutableLiveData<RegisterFormState>()
     val registerFormState: LiveData<RegisterFormState> = _loginForm

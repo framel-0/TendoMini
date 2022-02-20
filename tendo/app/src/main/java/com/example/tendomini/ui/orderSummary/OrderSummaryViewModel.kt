@@ -3,17 +3,23 @@ package com.example.tendomini.ui.orderSummary
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.tendomini.R
-import com.example.tendomini.data.models.CartItem
-import com.example.tendomini.data.models.DeliveryLocation
-import com.example.tendomini.data.models.Order
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
 import com.example.tendomini.data.repository.cart.ShoppingCartRepository
 import com.example.tendomini.data.repository.order.OrderRepository
+import com.example.tendomini.domain.models.CartItem
+import com.example.tendomini.domain.models.DeliveryLocation
+import com.example.tendomini.domain.models.Order
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-class OrderSummaryViewModel(private val orderRepository: OrderRepository) : ViewModel() {
+@HiltViewModel
+class OrderSummaryViewModel @Inject constructor(private val orderRepository: OrderRepository) :
+    ViewModel() {
 
     private val _orderResult = MutableLiveData<OrderResult>()
     val orderResult: LiveData<OrderResult> = _orderResult
@@ -47,32 +53,35 @@ class OrderSummaryViewModel(private val orderRepository: OrderRepository) : View
     }
 
     fun saveOrder() {
-        val dateNow = Date()
 
-        val dateFormat = SimpleDateFormat(
-            "HHmmss", Locale.getDefault()
-        )
+        viewModelScope.launch {
+            val dateNow = Date()
 
-        val date = dateFormat.format(dateNow)
+            val dateFormat = SimpleDateFormat(
+                "HHmmss", Locale.getDefault()
+            )
 
-        val code = date.toString()
+            val date = dateFormat.format(dateNow)
 
-        val order = Order(
-            id = 0,
-            code = code,
-            timestamp = dateNow,
-            deliveryLocation = deliveryLocation.value!!,
-            description = description.value,
-            items = cartItems.value as List<CartItem>
-        )
+            val code = date.toString()
 
-        val result = orderRepository.addOrder(order)
+            val order = Order(
+                id = 0,
+                code = code,
+                timestamp = dateNow,
+                deliveryLocation = deliveryLocation.value!!,
+                description = description.value,
+                items = cartItems.value as List<CartItem>
+            )
 
-        if (result is Result.Success) {
-            _orderResult.value =
-                OrderResult(success = result.data)
-        } else {
-            _orderResult.value = OrderResult(error = R.string.order_failed)
+            val result = orderRepository.addOrder(order)
+
+            if (result is Result.Success) {
+                _orderResult.value =
+                    OrderResult(success = result.data)
+            } else {
+                _orderResult.value = OrderResult(error = R.string.order_failed)
+            }
         }
     }
 

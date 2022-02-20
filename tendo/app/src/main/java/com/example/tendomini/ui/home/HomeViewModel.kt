@@ -4,15 +4,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tendomini.R
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
 import com.example.tendomini.data.repository.product.ProductRepository
 import com.example.tendomini.data.repository.productCategory.ProductCategoryRepository
 import com.example.tendomini.data.repository.user.UserRepository
 import com.example.tendomini.ui.login.AuthenticationState
 import com.example.tendomini.ui.product.ProductsResult
 import com.example.tendomini.ui.productCategory.ProductCategoriesResult
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class HomeViewModel(
+
+@HiltViewModel
+class HomeViewModel @Inject constructor(
     private val userRepository: UserRepository,
     private val productRepository: ProductRepository,
     private val productCategoryRepository: ProductCategoryRepository

@@ -8,25 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import com.example.tendomini.R
 import com.example.tendomini.databinding.FragmentRegisterBinding
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
-import org.kodein.di.generic.instance
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
+class RegisterFragment : Fragment() {
 
-class RegisterFragment : Fragment(), KodeinAware {
-
-    override val kodein by closestKodein()
-
-    private lateinit var registerViewModel: RegisterViewModel
-    private val viewModelFactory: RegisterViewModelFactory by instance()
+    private val registerViewModel: RegisterViewModel by viewModels()
 
     private var _binding: FragmentRegisterBinding? = null
 
@@ -45,8 +41,6 @@ class RegisterFragment : Fragment(), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        registerViewModel = ViewModelProvider(this, viewModelFactory)
-            .get(RegisterViewModel::class.java)
 
         val fullNameEditText = binding.editTextRegisterFullName
         val phoneNumberEditText = binding.editTextRegisterPhoneNumber
@@ -126,17 +120,17 @@ class RegisterFragment : Fragment(), KodeinAware {
 
         registerButton.setOnClickListener {
 
-            val phoneNumber  = phoneNumberEditText.text.toString()
+            val phoneNumber = phoneNumberEditText.text.toString()
 
             val phoneNumberIntCode = phoneNumber.substring(4, phoneNumber.length)
 
-                val sub = phoneNumberIntCode.substring(0, 1)
+            val sub = phoneNumberIntCode.substring(0, 1)
 
-                val phoneNumberFmt = if (sub == "0") {
-                    phoneNumberIntCode.substring(1, phoneNumberIntCode.length)
-                } else {
-                    phoneNumberIntCode
-                }
+            val phoneNumberFmt = if (sub == "0") {
+                phoneNumberIntCode.substring(1, phoneNumberIntCode.length)
+            } else {
+                phoneNumberIntCode
+            }
 
             val passwordEdt = "+233$phoneNumberFmt"
 

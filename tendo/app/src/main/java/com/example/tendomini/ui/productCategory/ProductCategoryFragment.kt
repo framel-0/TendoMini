@@ -7,23 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.tendomini.data.models.ProductCategory
 import com.example.tendomini.databinding.FragmentProductCategoryBinding
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
-import org.kodein.di.generic.instance
+import com.example.tendomini.domain.models.ProductCategory
+import com.example.tendomini.ui.productCategory.adaptors.ProductCategoryListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-class ProductCategoryFragment : Fragment(), KodeinAware {
+@AndroidEntryPoint
+class ProductCategoryFragment : Fragment() {
 
-    override val kodein by closestKodein()
-
-    private lateinit var viewModel: ProductCategoryViewModel
-    private val viewModelFactory:  ProductCategoryViewModelFactory by instance()
+    private val viewModel: ProductCategoryViewModel by viewModels()
 
     private var _binding: FragmentProductCategoryBinding? = null
 
@@ -34,18 +32,12 @@ class ProductCategoryFragment : Fragment(), KodeinAware {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         _binding = FragmentProductCategoryBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel =
-            ViewModelProvider(this, viewModelFactory).get(ProductCategoryViewModel::class.java)
 
         getProductCategories()
     }
@@ -91,7 +83,7 @@ class ProductCategoryFragment : Fragment(), KodeinAware {
 //                        setupRecyclerProduct(it)
                     }
                     productCategoriesResult.success?.let {
-                        setupRecyclerProductCategory(it)
+                        setupRecyclerProductCategory(it as ArrayList<ProductCategory>)
                     }
                 })
 
@@ -109,10 +101,11 @@ class ProductCategoryFragment : Fragment(), KodeinAware {
     }
 
     private fun onCategoryClick(category: ProductCategory) {
+        val categoryId = category.id
         val action =
             ProductCategoryFragmentDirections
                 .actionNavigationProductCategoryToProductFragment(
-                    categoryId = category.id
+                    categoryId
                 )
 
         findNavController().navigate(action)

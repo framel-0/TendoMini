@@ -5,27 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.tendomini.R
-import com.example.tendomini.data.models.Product
-import com.example.tendomini.data.models.ProductCategory
 import com.example.tendomini.databinding.FragmentHomeBinding
+import com.example.tendomini.domain.models.Product
+import com.example.tendomini.domain.models.ProductCategory
 import com.example.tendomini.ui.login.AuthenticationState
-import com.example.tendomini.ui.product.ProductListAdapter
-import com.example.tendomini.ui.productCategory.ProductCategoryListAdapter
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
-import org.kodein.di.generic.instance
+import com.example.tendomini.ui.product.adapters.ProductListAdapter
+import com.example.tendomini.ui.productCategory.adaptors.ProductCategoryListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-class HomeFragment : Fragment(), KodeinAware {
+@AndroidEntryPoint
+class HomeFragment : Fragment() {
 
-    override val kodein by closestKodein()
-
-    private lateinit var viewModel: HomeViewModel
-    private val viewModelFactory: HomeViewModelFactory by instance()
+    private val viewModel: HomeViewModel by viewModels()
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -35,7 +31,7 @@ class HomeFragment : Fragment(), KodeinAware {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
@@ -43,19 +39,17 @@ class HomeFragment : Fragment(), KodeinAware {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel =
-            ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         val navController = NavHostFragment.findNavController(this)
 
         viewModel.authenticationState.observe(
-            viewLifecycleOwner,
-            Observer { authenticationState ->
-                when (authenticationState) {
+            viewLifecycleOwner
+        ) { authenticationState ->
+            when (authenticationState) {
 //                AuthenticationState.AUTHENTICATED -> showWelcomeMessage()
-                    AuthenticationState.UNAUTHENTICATED ->  navController.navigate(R.id.loginFragment)
-                }
-            })
+                AuthenticationState.UNAUTHENTICATED -> navController.navigate(R.id.loginFragment)
+            }
+        }
 
         getProducts()
         getProductCategories()
@@ -75,7 +69,7 @@ class HomeFragment : Fragment(), KodeinAware {
 //                        setupRecyclerProduct(it)
                     }
                     productsResult.success?.let {
-                        setupRecyclerProduct(it)
+                        setupRecyclerProduct(it as ArrayList<Product>)
                     }
                 })
 
@@ -94,7 +88,7 @@ class HomeFragment : Fragment(), KodeinAware {
 //                        setupRecyclerProduct(it)
                     }
                     productCategoriesResult.success?.let {
-                        setupRecyclerProductCategory(it)
+                        setupRecyclerProductCategory(it as ArrayList<ProductCategory>)
                     }
                 })
 
@@ -113,7 +107,7 @@ class HomeFragment : Fragment(), KodeinAware {
         val action =
             HomeFragmentDirections
                 .actionNavigationHomeToProductFragment(
-                    categoryId = category.id
+                    category.id
                 )
 
         findNavController().navigate(action)
@@ -131,7 +125,7 @@ class HomeFragment : Fragment(), KodeinAware {
         val action =
             HomeFragmentDirections
                 .actionNavigationHomeToProductDetailFragment(
-                    product = product
+                    product
                 )
 
         findNavController().navigate(action)

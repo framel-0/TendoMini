@@ -3,11 +3,14 @@ package com.example.tendomini.ui.product.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tendomini.data.models.CartItem
-import com.example.tendomini.data.models.Product
 import com.example.tendomini.data.repository.cart.ShoppingCartRepository
+import com.example.tendomini.domain.models.CartItem
+import com.example.tendomini.domain.models.Product
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProductDetailViewModel : ViewModel() {
+@HiltViewModel
+class ProductDetailViewModel @Inject constructor() : ViewModel() {
     private val _product = MutableLiveData<Product>()
     val product: LiveData<Product> = _product
 

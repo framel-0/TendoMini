@@ -1,8 +1,8 @@
 package com.example.tendomini.ui.productCategory
 
-import com.example.tendomini.data.models.ProductCategory
+import com.example.tendomini.domain.models.ProductCategory
 
 data class ProductCategoriesResult(
-    val success: ArrayList<ProductCategory>? = null,
+    val success: List<ProductCategory>? = null,
     val error: Int? = null
 )

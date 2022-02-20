@@ -1,8 +1,8 @@
 package com.example.tendomini.data.repository.user
 
-import com.example.tendomini.data.datasource.user.UserDataSource
-import com.example.tendomini.data.models.Result
-import com.example.tendomini.data.models.User
+import com.example.tendomini.data.Result
+import com.example.tendomini.data.datasource.local.entites.UserEntity
+import com.example.tendomini.domain.models.User
 
 /**
  * Class that requests authentication and user information from the remote data source and

@@ -1,20 +1,38 @@
 package com.example.tendomini.data.repository.product
 
-import com.example.tendomini.data.datasource.product.ProductDataSource
-import com.example.tendomini.data.models.Product
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
+import com.example.tendomini.data.datasource.remote.mappers.ProductDtoMapper
+import com.example.tendomini.data.datasource.remote.product.ProductDataSource
+import com.example.tendomini.domain.models.Product
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class ProductRepositoryImpl(
-    private val dataSource: ProductDataSource
+@Singleton
+class ProductRepositoryImpl @Inject constructor(
+    private val dataSource: ProductDataSource,
+    private val dtoMapper: ProductDtoMapper
 ) : ProductRepository {
 
+    override fun getProducts(): Result<List<Product>> {
+        try {
 
-    override fun getProducts(): Result<ArrayList<Product>> {
-        return dataSource.products
+            val productsDto = dataSource.products
+            return Result.Success(dtoMapper.toDomainList(productsDto))
+
+        } catch (e: Exception) {
+            return Result.Error(e)
+        }
     }
 
-    override fun getProductsCategory(categoryId: Int): Result<ArrayList<Product>> {
-        return dataSource.productsCategory(categoryId)
+    override fun getProductsCategory(categoryId: Int): Result<List<Product>> {
+        try {
+
+            val productsDto = dataSource.productsCategory(categoryId)
+            return Result.Success(dtoMapper.toDomainList(productsDto))
+
+        } catch (e: Exception) {
+            return Result.Error(e)
+        }
     }
 
 

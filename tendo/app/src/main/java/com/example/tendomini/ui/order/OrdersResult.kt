@@ -1,8 +1,8 @@
 package com.example.tendomini.ui.order
 
-import com.example.tendomini.data.models.Order
+import com.example.tendomini.domain.models.Order
 
 data class OrdersResult(
-    val success: ArrayList<Order>? = null,
+    val success: List<Order>? = null,
     val error: Int? = null
 )

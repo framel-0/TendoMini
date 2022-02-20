@@ -2,7 +2,7 @@ package com.example.tendomini.data.repository.cart
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.tendomini.data.models.CartItem
+import com.example.tendomini.domain.models.CartItem
 import io.paperdb.Paper
 
 object ShoppingCartRepository {

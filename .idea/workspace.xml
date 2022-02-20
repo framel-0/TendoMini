@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a246c9dd-397e-414f-822a-a18f6b195ba6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/images/AndroidTemplate-CleanArchitecture.drawio" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/AndroidTemplate-CleanArchitecture.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/logo1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tendo/.gradle/7.0.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/tendo/.gradle/7.0.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tendo/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/tendo/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tendo/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/tendo/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tendo/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_5_0_alpha03_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tendo/.idea/libraries/Gradle__androidx_test_espresso_espresso_idling_resource_3_5_0_alpha03_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tendo/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tendo/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +31,8 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/tendo" />
     <property name="project.structure.last.edited" value="Project" />

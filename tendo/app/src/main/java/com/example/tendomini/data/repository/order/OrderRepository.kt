@@ -1,12 +1,12 @@
 package com.example.tendomini.data.repository.order
 
-import com.example.tendomini.data.models.Order
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
+import com.example.tendomini.domain.models.Order
 
 interface OrderRepository {
-    fun getOrders(): Result<ArrayList<Order>>
+    fun getOrders(): Result<List<Order>>
 
-    fun addOrder(order: Order): Result<Long>
+    suspend fun addOrder(order: Order): Result<Long>
 
-    fun deleteOrders()
+    suspend fun deleteOrders()
 }

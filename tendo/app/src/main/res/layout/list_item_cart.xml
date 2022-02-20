@@ -8,7 +8,7 @@
 
         <variable
             name="cartItem"
-            type="com.example.tendomini.data.models.CartItem" />
+            type="com.example.tendomini.domain.models.CartItem" />
     </data>
 
     <androidx.cardview.widget.CardView

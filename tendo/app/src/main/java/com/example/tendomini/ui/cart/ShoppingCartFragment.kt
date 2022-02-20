@@ -7,22 +7,19 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.tendomini.data.models.CartItem
-import com.example.tendomini.data.models.DeliveryLocation
 import com.example.tendomini.databinding.FragmentShoppingCartBinding
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
-import org.kodein.di.generic.instance
+import com.example.tendomini.domain.models.CartItem
+import com.example.tendomini.domain.models.DeliveryLocation
+import com.example.tendomini.ui.cart.adapters.ShoppingCartAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-class ShoppingCartFragment : Fragment(), KodeinAware {
+@AndroidEntryPoint
+class ShoppingCartFragment : Fragment() {
 
-    override val kodein by closestKodein()
-
-    private lateinit var viewModel: ShoppingCartViewModel
-    private val viewModelFactory: ShoppingCartViewModelFactory by instance()
+    private val viewModel: ShoppingCartViewModel by viewModels()
 
     private var _binding: FragmentShoppingCartBinding? = null
 
@@ -32,9 +29,7 @@ class ShoppingCartFragment : Fragment(), KodeinAware {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel = ViewModelProvider(this, viewModelFactory).get(ShoppingCartViewModel::class.java)
         _binding = FragmentShoppingCartBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
@@ -64,8 +59,8 @@ class ShoppingCartFragment : Fragment(), KodeinAware {
             val action =
                 ShoppingCartFragmentDirections
                     .actionShoppingCartFragmentToOrderFragment(
-                        deliveryLocation = viewModel.deliveryLocation.value!!,
-                        description = viewModel.description.value.toString()
+                        viewModel.deliveryLocation.value!!,
+                        viewModel.description.value.toString()
                     )
 
             findNavController().navigate(action)
@@ -73,7 +68,7 @@ class ShoppingCartFragment : Fragment(), KodeinAware {
 
         getDeliveryLocations()
 
-        return root
+        return binding.root
     }
 
     private fun setupRecyclerCart(cartItems: List<CartItem>) {
@@ -103,16 +98,16 @@ class ShoppingCartFragment : Fragment(), KodeinAware {
         viewModel.getDeliveryLocations()
 //        if (view != null) {
 
-            viewModel.deliveryLocationsResult.observe(viewLifecycleOwner,
-                Observer { deliveryLocationsResult ->
-                    deliveryLocationsResult ?: return@Observer
+        viewModel.deliveryLocationsResult.observe(viewLifecycleOwner,
+            Observer { deliveryLocationsResult ->
+                deliveryLocationsResult ?: return@Observer
 //                    binding.progressBarProductCategory.visibility = View.GONE
-                    deliveryLocationsResult.error?.let {
-                    }
-                    deliveryLocationsResult.success?.let {
-                        setupSpinnerDeliveryLocation(it)
-                    }
-                })
+                deliveryLocationsResult.error?.let {
+                }
+                deliveryLocationsResult.success?.let {
+                    setupSpinnerDeliveryLocation(it as ArrayList<DeliveryLocation>)
+                }
+            })
 
 //        }
     }

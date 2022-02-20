@@ -4,13 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tendomini.R
-import com.example.tendomini.data.models.CartItem
-import com.example.tendomini.data.models.DeliveryLocation
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
 import com.example.tendomini.data.repository.cart.ShoppingCartRepository
 import com.example.tendomini.data.repository.deliveryLocation.DeliveryLocationRepository
+import com.example.tendomini.domain.models.CartItem
+import com.example.tendomini.domain.models.DeliveryLocation
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ShoppingCartViewModel(private val deliveryLocationRepository: DeliveryLocationRepository) :
+@HiltViewModel
+class ShoppingCartViewModel @Inject constructor(private val deliveryLocationRepository: DeliveryLocationRepository) :
     ViewModel() {
 
     val cartItems: LiveData<MutableList<CartItem>> = ShoppingCartRepository.cartItems

@@ -43,7 +43,7 @@
         tools:layout="@layout/fragment_product">
         <argument
             android:name="categoryId"
-            android:defaultValue="0" />
+            app:argType="integer" />
         <action
             android:id="@+id/action_productFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
@@ -55,7 +55,7 @@
         tools:layout="@layout/fragment_product_detail">
         <argument
             android:name="product"
-            app:argType="com.example.tendomini.data.models.Product" />
+            app:argType="com.example.tendomini.domain.models.Product" />
     </fragment>
     <fragment
         android:id="@+id/navigation_settings"
@@ -77,7 +77,7 @@
         tools:layout="@layout/fragment_order_summary" >
         <argument
             android:name="deliveryLocation"
-            app:argType="com.example.tendomini.data.models.DeliveryLocation" />
+            app:argType="com.example.tendomini.domain.models.DeliveryLocation" />
         <argument
             android:name="description"
             app:argType="string"
@@ -109,7 +109,7 @@
         tools:layout="@layout/fragment_order_detail">
         <argument
             android:name="order"
-            app:argType="com.example.tendomini.data.models.Order" />
+            app:argType="com.example.tendomini.domain.models.Order" />
     </fragment>
 
 </navigation>

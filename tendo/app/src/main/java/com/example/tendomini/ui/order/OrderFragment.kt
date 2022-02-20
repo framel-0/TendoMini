@@ -9,22 +9,18 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.tendomini.data.models.Order
 import com.example.tendomini.databinding.FragmentOrderBinding
-import com.example.tendomini.ui.product.ProductFragmentDirections
-import org.kodein.di.KodeinAware
-import org.kodein.di.android.x.closestKodein
-import org.kodein.di.generic.instance
+import com.example.tendomini.domain.models.Order
+import com.example.tendomini.ui.order.adapters.OrderListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
-class OrderFragment : Fragment(), KodeinAware {
+@AndroidEntryPoint
+class OrderFragment : Fragment() {
 
-    override val kodein by closestKodein()
-
-    private lateinit var viewModel: OrderViewModel
-    private val viewModelFactory: OrderViewModelFactory by instance()
+    private val viewModel: OrderViewModel by viewModels()
 
     private var _binding: FragmentOrderBinding? = null
 
@@ -35,13 +31,11 @@ class OrderFragment : Fragment(), KodeinAware {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentOrderBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(OrderViewModel::class.java)
 
         getOrders()
 
@@ -88,7 +82,7 @@ class OrderFragment : Fragment(), KodeinAware {
 //                        setupRecyclerOrder(it)
                     }
                     ordersResult.success?.let {
-                        setupRecyclerOrder(it)
+                        setupRecyclerOrder(it as ArrayList<Order>)
                     }
                 })
 
@@ -108,7 +102,7 @@ class OrderFragment : Fragment(), KodeinAware {
         val action =
             OrderFragmentDirections
                 .actionOrderFragmentToOrderDetailFragment(
-                    order = order
+                    order
                 )
 
         findNavController().navigate(action)

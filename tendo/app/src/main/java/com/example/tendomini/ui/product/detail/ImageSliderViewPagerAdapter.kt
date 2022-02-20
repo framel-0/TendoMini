@@ -26,7 +26,7 @@ class ImageSliderViewPagerAdapter :
 
     override fun onBindViewHolder(holder: ImageSliderViewPagerHolder, position: Int) {
         val product = _images[position]
-        holder.bind(product, position)
+        holder.bind(product)
     }
 
 }

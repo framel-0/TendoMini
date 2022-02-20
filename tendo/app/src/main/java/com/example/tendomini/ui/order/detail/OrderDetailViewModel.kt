@@ -3,10 +3,12 @@ package com.example.tendomini.ui.order.detail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.tendomini.data.models.Order
-import java.lang.StringBuilder
+import com.example.tendomini.domain.models.Order
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class OrderDetailViewModel : ViewModel() {
+@HiltViewModel
+class OrderDetailViewModel @Inject constructor() : ViewModel() {
 
     private val _order = MutableLiveData<Order>()
     val order: LiveData<Order> = _order

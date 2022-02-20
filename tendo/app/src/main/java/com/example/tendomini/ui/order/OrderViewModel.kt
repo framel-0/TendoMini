@@ -4,10 +4,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.tendomini.R
-import com.example.tendomini.data.models.Result
+import com.example.tendomini.data.Result
 import com.example.tendomini.data.repository.order.OrderRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class OrderViewModel(private val orderRepository: OrderRepository) : ViewModel() {
+@HiltViewModel
+class OrderViewModel @Inject constructor(private val orderRepository: OrderRepository) :
+    ViewModel() {
     private val _ordersResult = MutableLiveData<OrdersResult>()
     val ordersResult: LiveData<OrdersResult> = _ordersResult
 

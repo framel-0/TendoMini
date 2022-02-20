@@ -12,7 +12,7 @@ class ImageSliderViewPagerHolder(
 
     private var _image: Int = 0
 
-    fun bind(image: Int, position: Int) {
+    fun bind(image: Int) {
         _image = image
         with(binding) {
             GlideApp.with(itemView.context).load(_image)
